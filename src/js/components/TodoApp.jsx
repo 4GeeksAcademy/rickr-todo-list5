@@ -8,25 +8,25 @@ import TodoFooter from "./TodoFooter";
 
 // think about what should be included in the todos array
 // an array of objects (JSON)
-// [
-//  {
-//      id: 1, 
-//      title: Mow lawn,
-//  },
-//  {
-//      id: 2, 
-//      title: Wash car,
-//  },
-// ]
+let testTodos = [
+ {
+     id: 1, 
+     title: 'Mow lawn',
+ },
+ {
+     id: 2, 
+     title: 'Wash car',
+ },
+]
 
 
 const TodoApp = () => {
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState(testTodos);
 
     return (
         <>
             <TodoInput />
-            <TodoTasks />
+            <TodoTasks todos={todos} setTodos={setTodos} />
             <TodoFooter />
         </>
     );
