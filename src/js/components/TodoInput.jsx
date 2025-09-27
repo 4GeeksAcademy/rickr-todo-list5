@@ -1,33 +1,22 @@
 import { useState } from "react";
-// TodoInput should do the following:
-// 1. We want the user to input a todo item in a text box
-//  1a. We want to validate the input: If the textbox is blank and the user click submit, it
-//          should throw an alert to input something.  Otherwise we should append the task to the array.
-// 2. We want to control the input by connecting the input tag with the useState
-// 3. We want to have a button that will perform some operation to append the todo
-//      to an array.
+import { postData } from "./fetch";
 
 
 const TodoInput = ({ todos, setTodos }) => {
     // we need to create 2 new useState to create the new todo objects, that we can then append to the todos array
     const [newTask, setNewTask] = useState("");
-    const [counter, setCounter] = useState(0);
 
-    // function addTask will create a new todo object with a counter and newTask states to append to the todos array
+    // function addTask will create a new todo object and POST it to the Todo API
     const addTask = () => {
         console.log("Creating new todo object to append to the todos array: ", newTask);
 
         // create a new todo object
         let newTodoObject = {
-            id: counter,
-            title: newTask,
+            label: newTask,
+            is_done: false
         }
 
-        // append this newly create todo object to the todos array
-        setTodos([...todos, newTodoObject]);
-
-        // increment the counter
-        setCounter(counter + 1);
+        postData(setTodos, newTodoObject);
     }
 
     // function checkTextBox will validate if the input text box has any user input.  If it does it will call 
@@ -46,6 +35,7 @@ const TodoInput = ({ todos, setTodos }) => {
     // we need a button that will validate if there is text in the textbox
     return (
         <>
+            <h1>todos</h1>
             <input 
                 type="text"
                 className="new-todo"

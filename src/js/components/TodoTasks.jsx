@@ -13,7 +13,7 @@ const TodoTasks = ({todos, setTodos}) => {
     let renderTasks = todos.map(todo => {
         return (
             <li className="list-item" key={todo.id}>
-                <label>{todo.title}</label>
+                <label>{todo.label}</label>
                 <button
                     className="delete-task"
                     onClick={() => {deleteTask(todo.id)}}
