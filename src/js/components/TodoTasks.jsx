@@ -1,14 +1,7 @@
 // TodoTasks is the body of the todo list app
+import { deleteTask } from "./fetch";
 
 const TodoTasks = ({todos, setTodos}) => {
-
-    // create a function called deleteTask() that will identify the todo item by id number
-    // and use the .filter() function to create a new array WITHOUT that todo item and display
-    // on the screen
-    const deleteTask = (todoId) => {
-        let updatedTodos = todos.filter(todo => todo.id !== todoId);
-        setTodos(updatedTodos);
-    }
 
     let renderTasks = todos.map(todo => {
         return (
@@ -16,7 +9,7 @@ const TodoTasks = ({todos, setTodos}) => {
                 <label>{todo.label}</label>
                 <button
                     className="delete-task"
-                    onClick={() => {deleteTask(todo.id)}}
+                    onClick={() => {deleteTask(todo.id, setTodos)}}
                 >X</button>
             </li>
         );

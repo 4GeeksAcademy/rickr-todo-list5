@@ -8,7 +8,7 @@ const TodoInput = ({ todos, setTodos }) => {
 
     // function addTask will create a new todo object and POST it to the Todo API
     const addTask = () => {
-        console.log("Creating new todo object to append to the todos array: ", newTask);
+        //console.log("Creating new todo object to append to the todos array: ", newTask);
 
         // create a new todo object
         let newTodoObject = {
@@ -17,6 +17,7 @@ const TodoInput = ({ todos, setTodos }) => {
         }
 
         postData(setTodos, newTodoObject);
+        setNewTask("");
     }
 
     // function checkTextBox will validate if the input text box has any user input.  If it does it will call 
@@ -35,7 +36,6 @@ const TodoInput = ({ todos, setTodos }) => {
     // we need a button that will validate if there is text in the textbox
     return (
         <>
-            <h1>todos</h1>
             <input 
                 type="text"
                 className="new-todo"
