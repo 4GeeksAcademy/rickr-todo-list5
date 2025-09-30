@@ -1,3 +1,17 @@
+// POST new username
+export const postNewUser = async(username, setNewUserResult) => {
+    let options = {
+        method: "POST"
+    }
+
+    const response = await fetch(`https://playground.4geeks.com/todo/users/${username}`, options);
+
+    if (response.status === 400) {
+        setNewUserResult(false);
+    }
+    
+}
+
 
 // GET single user data
 export const getData = async(setTodos) => {

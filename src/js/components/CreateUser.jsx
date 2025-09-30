@@ -1,9 +1,11 @@
+import { useState } from "react";
+import { postNewUser } from "./fetch";
 
 const CreateUser = ({ username, setUsername }) => {
+    const [newUserResult, setNewUserResult] = useState(true);
 
     const addNewUser = () => {
-
-        postNewUser(username);
+        postNewUser(username, setNewUserResult);
         setUsername("");
     }
 
@@ -19,6 +21,13 @@ const CreateUser = ({ username, setUsername }) => {
 
     return (
         <>
+            {
+                (!newUserResult)
+                ?
+                (<p className="text-danger bg-dark">User already exists!</p>)
+                :
+                ("")
+            }
             <input 
                 type="text"
                 className="new-user"
